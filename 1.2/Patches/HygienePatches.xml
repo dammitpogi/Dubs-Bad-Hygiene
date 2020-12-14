@@ -67,4 +67,35 @@
     </operations>
   </Operation>
 
+    <!--prison labor-->
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Prison Labor - Forked</li>
+      <li>Prison Labor</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+    <success>Always</success>
+      <operations>			
+        <li Class="PatchOperationTest">
+          <xpath>*/ThinkTreeDef[defName = "PrisonLabor_WorkThinkTree"]</xpath>
+          <success>Always</success>
+        </li>
+        <li Class="PatchOperationInsert">
+          <xpath>*/ThinkTreeDef[defName = "PrisonLabor_WorkThinkTree"]/thinkRoot[@Class="PrisonLabor.Core.AI.ThinkNodes.ThinkNode_Conditional_Labor"]/subNodes/li[@Class="ThinkNode_Priority"]/subNodes//li[1]</xpath>
+          <value><li Class="DubsBadHygiene.JobGiver_HaveWash"/></value>
+        </li>		
+        <li Class="PatchOperationInsert">
+          <xpath>*/ThinkTreeDef[defName = "PrisonLabor_WorkThinkTree"]/thinkRoot[@Class="PrisonLabor.Core.AI.ThinkNodes.ThinkNode_Conditional_Labor"]/subNodes/li[@Class="ThinkNode_Priority"]/subNodes//li[1]</xpath>
+          <value><li Class="DubsBadHygiene.JobGiver_UseToilet"/></value>
+        </li>	
+        <li Class="PatchOperationInsert">
+          <xpath>*/ThinkTreeDef[defName = "PrisonLabor_WorkThinkTree"]/thinkRoot[@Class="PrisonLabor.Core.AI.ThinkNodes.ThinkNode_Conditional_Labor"]/subNodes/li[@Class="ThinkNode_Priority"]/subNodes//li[1]</xpath>
+          <value><li Class="DubsBadHygiene.JobGiver_DrinkWater"/></value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+
+  
 </Patch>
